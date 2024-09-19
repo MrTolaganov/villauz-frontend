@@ -46,8 +46,6 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(process.env.API_URL);
-
   return (
     <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
       <Box sx={{ bgcolor: "primary.main" }} className="min-h-screen">

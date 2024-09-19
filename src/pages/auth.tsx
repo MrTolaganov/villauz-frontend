@@ -44,8 +44,6 @@ export default function Auth() {
         return data;
       }
       if (authState === "forgot-pass") {
-        console.log(userData.email);
-
         const { data } = await $axios.post("/auth/forgot-pass", { email: userData.email });
         return data;
       }
