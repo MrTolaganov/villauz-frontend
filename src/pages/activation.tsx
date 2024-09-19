@@ -2,19 +2,17 @@ import { Alert, Container } from "@mui/material";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 export default function Activation() {
   const { user } = useSelector((state: RootState) => state.user);
   const { isAuth } = useSelector((state: RootState) => state.authState);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (user.activated || !isAuth) {
-      navigate("/");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user.activated]);
+  if (user.activated || !isAuth) {
+    navigate("/");
+  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 
   return (
     <div className="min-h-screen flex justify-center items-center">
