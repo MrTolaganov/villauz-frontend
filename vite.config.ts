@@ -16,5 +16,8 @@ export default defineConfig(({ mode }) => {
       "process.env.API_URL": JSON.stringify(env.API_URL),
     },
     plugins: [react()],
+    build: {
+      target: "esnext",
+    },
   };
 });
