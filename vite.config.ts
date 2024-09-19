@@ -18,6 +18,7 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     build: {
       target: "esnext",
+      outDir: "dist",
     },
   };
 });
