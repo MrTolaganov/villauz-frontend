@@ -11,7 +11,7 @@ import { setOpenedSnack } from "./slices/snackbar.slice";
 import $axios from "./http/axios";
 import { setUser } from "./slices/user.slice";
 import { setIsAuth } from "./slices/authstate.slice";
-import { useEffect } from "react";
+import { StrictMode, useEffect } from "react";
 import { setHouseState, setOpenedDialog } from "./slices/house.slice";
 import HouseDialog from "./components/house-dialog";
 import Activation from "./pages/activation";
@@ -43,22 +43,21 @@ export default function App() {
     if (localStorage.getItem("accessToken")) {
       checkAuth();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log(user.activated, isAuth);
 
   return (
     <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
       <Box sx={{ bgcolor: "primary.main" }} className="min-h-screen">
         <Container fixed>
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Home user={user} />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/activation" element={<Activation user={user} isAuth={isAuth} />} />
-            <Route path="/rec-acc/:token" element={<Recovery />} />
-          </Routes>
+          <StrictMode>
+            <Routes>
+              <Route path="/" element={<Home user={user} />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/activation" element={<Activation user={user} isAuth={isAuth} />} />
+              <Route path="/rec-acc/:token" element={<Recovery />} />
+            </Routes>
+          </StrictMode>
         </Container>
         <Snackbar
           open={openedSnack}
