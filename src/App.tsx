@@ -46,6 +46,8 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  console.log(user.activated, isAuth);
+
   return (
     <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
       <Box sx={{ bgcolor: "primary.main" }} className="min-h-screen">
@@ -54,7 +56,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home user={user} />} />
             <Route path="/auth" element={<Auth />} />
-            <Route path="/activation" element={<Activation />} />
+            <Route path="/activation" element={<Activation user={user} isAuth={isAuth} />} />
             <Route path="/rec-acc/:token" element={<Recovery />} />
           </Routes>
         </Container>
